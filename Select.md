@@ -1,4 +1,4 @@
-# [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
+# №1 [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
 ## Solution:
 SELECT product_id
 
@@ -31,7 +31,7 @@ Expected
 | 1          |
 | 3          |
 
-# [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
+# №2 [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
 ## Solution 
 SELECT name
 
@@ -69,7 +69,7 @@ Expected
 | Bill |
 | Zack |
 
-# [595. Big Countries](https://leetcode.com/problems/big-countries/)
+# №3 [595. Big Countries](https://leetcode.com/problems/big-countries/)
 
 ## Solution
 SELECT name, population, area
@@ -107,3 +107,40 @@ Expected
 | Algeria     | 37100000   | 2381741 |
 
 
+# №4  [1148. Article Views I](https://leetcode.com/problems/article-views-i/)
+
+## Solution
+SELECT DISTINCT author_id as id
+
+FROM views
+
+WHERE author_id = viewer_id
+
+## Result
+
+Input
+
+Views =
+
+| article_id | author_id | viewer_id | view_date  |
+| ---------- | --------- | --------- | ---------- |
+| 1          | 3         | 5         | 2019-08-01 |
+| 1          | 3         | 6         | 2019-08-02 |
+| 2          | 7         | 7         | 2019-08-01 |
+| 2          | 7         | 6         | 2019-08-02 |
+| 4          | 7         | 1         | 2019-07-22 |
+| 3          | 4         | 4         | 2019-07-21 |
+
+Output
+
+| id  |
+| --- |
+| 4   |
+| 7   |
+
+Expected
+
+| id  |
+| --- |
+| 4   |
+| 7   |
