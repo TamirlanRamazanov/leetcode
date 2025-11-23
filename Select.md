@@ -144,3 +144,34 @@ Expected
 | --- |
 | 4   |
 | 7   |
+
+# №5 [1683. Invalid Tweets](https://leetcode.com/problems/invalid-tweets/)
+## Solution
+
+SELECT tweet_id
+
+FROM tweets
+
+WHERE LENGTH(content) > 15;
+
+## Result
+Input
+
+Tweets =
+
+| tweet_id | content                           |
+| -------- | --------------------------------- |
+| 1        | Let us Code                       |
+| 2        | More than fifteen chars are here! |
+
+Output
+
+| tweet_id |
+| -------- |
+| 2 |
+
+Expected
+
+| tweet_id |
+| -------- |
+| 2        |
