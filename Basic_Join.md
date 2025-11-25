@@ -155,3 +155,44 @@ Expected
 | 30          | 1              |
 | 96          | 1              |
 | 54          | 2              |
+
+# №4. [197. Rising Temperature](https://leetcode.com/problems/rising-temperature/)
+
+## Solution
+
+SELECT a.id as Id
+
+FROM weather a
+
+JOIN weather b
+
+ON a.recordDate = b.recordDate + 1
+
+WHERE a.temperature > b.temperature
+
+## Result
+
+Input
+
+Weather =
+
+| id | recordDate | temperature |
+| -- | ---------- | ----------- | 
+| 1 | 2015-01-01 | 10 |
+| 2 | 2015-01-02 | 25 |
+| 3 | 2015-01-03 | 20 |
+| 4 | 2015-01-04 | 30 |
+
+Output
+
+| id  |
+| --- |
+| 2   |
+| 4   |
+
+Expected
+
+| Id  |
+| --- |
+| 2   |
+| 4   |
