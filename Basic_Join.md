@@ -247,3 +247,52 @@ Expected
 | 0          | 0.894           |
 | 1          | 0.995           |
 | 2          | 1.456           |
+
+
+# №6. [577. Employee Bonus](https://leetcode.com/problems/employee-bonus/)
+
+## Solution
+SELECT e.name, b.bonus
+
+FROM employee e
+
+LEFT JOIN bonus b
+
+ON e.empId = b.empId
+
+WHERE b.bonus IS NULL OR bonus < 1000;
+
+## Result 
+Input
+
+Employee =
+
+| empId | name   | supervisor | salary |
+| ----- | ------ | ---------- | ------ |
+| 3     | Brad   | null       | 4000   |
+| 1     | John   | 3          | 1000   |
+| 2     | Dan    | 3          | 2000   |
+| 4     | Thomas | 3          | 4000   |
+
+Bonus =
+
+| empId | bonus |
+| ----- | ----- |
+| 2     | 500   |
+| 4     | 2000  |
+
+Output
+
+| name | bonus |
+| ---- | ----- |
+| Brad | null  |
+| John | null  |
+| Dan  | 500   |
+
+Expected
+
+| name | bonus |
+| ---- | ----- |
+| Brad | null  |
+| John | null  |
+| Dan  | 500   |
