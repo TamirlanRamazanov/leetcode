@@ -196,3 +196,54 @@ Expected
 | --- |
 | 2   |
 | 4   |
+
+# №5. [1661. Average Time of Process per Machine](https://leetcode.com/problems/average-time-of-process-per-machine/)
+
+## Solution 
+SELECT e.machine_id,
+
+ROUND( AVG(e.timestamp - s.timestamp), 3) AS processing_time
+
+FROM activity e
+
+JOIN activity s
+
+ON e.machine_id = s.machine_id
+
+AND e.process_id = s.process_id
+
+WHERE e.activity_type = 'end' AND s.activity_type = 'start'
+
+GROUP BY (e.machine_id);
+
+## Result
+Input
+
+Activity =
+
+| machine_id | process_id | activity_type | timestamp |
+| ---------- | ---------- | ------------- | --------- |
+| 0          | 0          | start         | 0.712     |
+| 0          | 0          | end           | 1.52      |
+| 0          | 1          | start         | 3.14      |
+| 0          | 1          | end           | 4.12      |
+| 1          | 0          | start         | 0.55      |
+| 1          | 0          | end           | 1.55      |
+
+View more
+
+Output
+
+| machine_id | processing_time |
+| ---------- | --------------- |
+| 0          | 0.894           |
+| 1          | 0.995           |
+| 2          | 1.456           |
+
+Expected
+
+| machine_id | processing_time |
+| ---------- | --------------- |
+| 0          | 0.894           |
+| 1          | 0.995           |
+| 2          | 1.456           |
