@@ -374,3 +374,45 @@ Expected
 | 2          | Bob          | Math         | 1              |
 | 2          | Bob          | Physics      | 0              |
 | 2          | Bob          | Programming  | 1              |
+
+# №8 [570. Managers with at Least 5 Direct Reports](https://leetcode.com/problems/managers-with-at-least-5-direct-reports/)
+
+## Solution
+
+SELECT m.name
+
+FROM employee e
+
+JOIN employee m
+
+ON e.managerId = m.id
+
+GROUP BY e.managerId
+
+HAVING COUNT(e.managerId) >= 5;
+## Result
+
+Input
+
+Employee =
+
+| id  | name  | department | managerId |
+| --- | ----- | ---------- | --------- |
+| 101 | John  | A          | null      |
+| 102 | Dan   | A          | 101       |
+| 103 | James | A          | 101       |
+| 104 | Amy   | A          | 101       |
+| 105 | Anne  | A          | 101       |
+| 106 | Ron   | B          | 101       |
+
+Output
+
+| name |
+| ---- |
+| John |
+
+Expected
+
+| name |
+| ---- |
+| John |
