@@ -416,3 +416,66 @@ Expected
 | name |
 | ---- |
 | John |
+
+
+# №9 [1934. Confirmation Rate](https://leetcode.com/problems/confirmation-rate/)
+# Solution:
+SELECT s.user_id,
+
+ROUND(
+	IFNULL( 
+		SUM(CASE WHEN action = 'confirmed' THEN 1 ELSE 0 END) / COUNT(action), 
+          0), 
+	2)И
+as confirmation_rate
+
+FROM signups s
+
+LEFT JOIN confirmations c
+
+ON s.user_id = c.user_id
+
+GROUP BY s.user_id;
+
+## Result
+Input
+
+Signups =
+
+| user_id | time_stamp          |
+| ------- | ------------------- |
+| 3       | 2020-03-21 10:16:13 |
+| 7       | 2020-01-04 13:57:59 |
+| 2       | 2020-07-29 23:09:44 |
+| 6       | 2020-12-09 10:39:37 |
+
+Confirmations =
+
+| user_id | time_stamp          | action    |
+| ------- | ------------------- | --------- |
+| 3       | 2021-01-06 03:30:46 | timeout   |
+| 3       | 2021-07-14 14:00:00 | timeout   |
+| 7       | 2021-06-12 11:57:29 | confirmed |
+| 7       | 2021-06-13 12:58:28 | confirmed |
+| 7       | 2021-06-14 13:59:27 | confirmed |
+| 2       | 2021-01-22 00:00:00 | confirmed |
+
+View more
+
+Output
+
+| user_id | confirmation_rate |
+| ------- | ----------------- |
+| 3       | 0                 |
+| 7       | 1                 |
+| 2       | 0.5               |
+| 6       | 0                 |
+
+Expected
+
+| user_id | confirmation_rate |
+| ------- | ----------------- |
+| 6       | 0                 |
+| 3       | 0                 |
+| 7       | 1                 |
+| 2       | 0.5               |
