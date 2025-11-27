@@ -143,8 +143,70 @@ Expected
 | 1          | 2             |
 | 2          | 2.5           |
 
-# №4
+# №4 [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
 ## Solution
+
+SELECT r.contest_id,
+
+ROUND(COUNT(r.user_id)/ (SELECT COUNT(*) FROM users) * 100, 2) AS percentage
+
+FROM users u
+
+  
+
+LEFT JOIN register r
+
+ON u.user_id = r.user_id
+
+GROUP BY r.contest_id
+
+ORDER BY percentage DESC, contest_id;
+
+## Result
+
+Input
+
+Users =
+
+| user_id | user_name |
+| ------- | --------- |
+| 6       | Alice     |
+| 2       | Bob       |
+| 7       | Alex      |
+
+Register =
+
+| contest_id | user_id |
+| ---------- | ------- |
+| 215        | 6       |
+| 209        | 2       |
+| 208        | 2       |
+| 210        | 6       |
+| 208        | 6       |
+| 209        | 7       |
+
+View more
+
+Output
+
+| contest_id | percentage |
+| ---------- | ---------- |
+| 208        | 100        |
+| 209        | 100        |
+| 210        | 100        |
+| 215        | 66.67      |
+| 207        | 33.33      |
+
+Expected
+
+| contest_id | percentage |
+| ---------- | ---------- |
+| 208        | 100        |
+| 209        | 100        |
+| 210        | 100        |
+| 215        | 66.67      |
+| 207        | 33.33      |
+
 ## Result
 # №5
 ## Solution
