@@ -207,10 +207,45 @@ Expected
 | 215        | 66.67      |
 | 207        | 33.33      |
 
-## Result
-# №5
+# №5 [1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/)
 ## Solution
+
+SELECT query_name, ROUND(AVG(rating / position), 2) as quality,
+
+ROUND(100* SUM(rating < 3) / COUNT(rating), 2) as poor_query_percentage
+
+FROM queries
+
+GROUP BY query_name
 ## Result
+
+Input
+
+Queries =
+
+| query_name | result           | position | rating |
+| ---------- | ---------------- | -------- | ------ |
+| Dog        | Golden Retriever | 1        | 5      |
+| Dog        | German Shepherd  | 2        | 5      |
+| Dog        | Mule             | 200      | 1      |
+| Cat        | Shirazi          | 5        | 2      |
+| Cat        | Siamese          | 3        | 3      |
+| Cat        | Sphynx           | 7        | 4      |
+
+Output
+
+| query_name | quality | poor_query_percentage |
+| ---------- | ------- | --------------------- |
+| Dog        | 2.5     | 33.33                 |
+| Cat        | 0.66    | 33.33                 |
+
+Expected
+
+| query_name | quality | poor_query_percentage |
+| ---------- | ------- | --------------------- |
+| Dog        | 2.5     | 33.33                 |
+| Cat        | 0.66    | 33.33                 |
+
 # №6
 ## Solution
 ## Result
