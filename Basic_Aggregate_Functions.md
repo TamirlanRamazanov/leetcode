@@ -246,9 +246,56 @@ Expected
 | Dog        | 2.5     | 33.33                 |
 | Cat        | 0.66    | 33.33                 |
 
-# №6
+# №6 [1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/)
 ## Solution
+
+SELECT
+
+DATE_FORMAT(trans_date, "%Y-%m") as month
+
+, country
+
+, COUNT(*) as trans_count
+
+, SUM(state = 'approved') as approved_count
+
+, SUM(amount) as trans_total_amount
+
+, SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) as approved_total_amount
+
+FROM transactions
+
+GROUP BY month, country;
+
 ## Result
+Input
+
+Transactions =
+
+| id  | country | state    | amount | trans_date |
+| --- | ------- | -------- | ------ | ---------- |
+| 121 | US      | approved | 1000   | 2018-12-18 |
+| 122 | US      | declined | 2000   | 2018-12-19 |
+| 123 | US      | approved | 2000   | 2019-01-01 |
+| 124 | DE      | approved | 2000   | 2019-01-07 |
+
+Output
+
+| month   | country | trans_count | approved_count | trans_total_amount | approved_total_amount |
+| ------- | ------- | ----------- | -------------- | ------------------ | --------------------- |
+| 2018-12 | US      | 2           | 1              | 3000               | 1000                  |
+| 2019-01 | US      | 1           | 1              | 2000               | 2000                  |
+| 2019-01 | DE      | 1           | 1              | 2000               | 2000                  |
+
+Expected
+
+| month   | country | trans_count | approved_count | trans_total_amount | approved_total_amount |
+| ------- | ------- | ----------- | -------------- | ------------------ | --------------------- |
+| 2018-12 | US      | 2           | 1              | 3000               | 1000                  |
+| 2019-01 | US      | 1           | 1              | 2000               | 2000                  |
+| 2019-01 | DE      | 1           | 1              | 2000               | 2000                  |
+
+
 # №7
 ## Solution
 ## Result
