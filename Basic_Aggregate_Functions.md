@@ -298,7 +298,61 @@ Expected
 
 # №7
 ## Solution
+
+SELECT ROUND( 100 * SUM(order_date = customer_pref_delivery_date) / COUNT(*), 2)
+
+as immediate_percentage
+
+FROM (
+
+SELECT d.*
+
+FROM delivery d
+
+JOIN (
+
+SELECT customer_id, MIN(order_date) AS first_date
+
+FROM delivery
+
+GROUP BY customer_id
+
+) t
+
+ON d.customer_id = t.customer_id
+
+AND d.order_date = t.first_date
+
+) temp;
 ## Result
+
+Input
+
+Delivery =
+
+| delivery_id | customer_id | order_date | customer_pref_delivery_date |
+| ----------- | ----------- | ---------- | --------------------------- |
+| 1           | 1           | 2019-08-01 | 2019-08-02                  |
+| 2           | 2           | 2019-08-02 | 2019-08-02                  |
+| 3           | 1           | 2019-08-11 | 2019-08-12                  |
+| 4           | 3           | 2019-08-24 | 2019-08-24                  |
+| 5           | 3           | 2019-08-21 | 2019-08-22                  |
+| 6           | 2           | 2019-08-11 | 2019-08-13                  |
+
+View more
+
+Output
+
+| immediate_percentage |
+| -------------------- | 
+| 50 |
+
+Expected
+
+| immediate_percentage |
+| -------------------- |
+| 50                   |
+
 # №8
 ## Solution
 ## Result
