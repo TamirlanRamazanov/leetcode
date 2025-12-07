@@ -1,6 +1,6 @@
 # №1. [2356. Number of Unique Subjects Taught by Each Teacher](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/)
 
-## Solution
+## Solution:
 ```sql
 SELECT teacher_id, COUNT(DISTINCT subject_id) as cnt
 
@@ -9,11 +9,11 @@ FROM teacher
 GROUP BY teacher_id
 ```
 
-## Result
+## Result:
 
 Input
 
-Teacher =
+Teacher =
 
 | teacher_id | subject_id | dept_id |
 | ---------- | ---------- | ------- |
@@ -40,11 +40,9 @@ Expected
 | ---------- | --- |
 | 1          | 2   |
 | 2          | 4   |
-
 # №2. [1141. User Activity for the Past 30 Days I](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/)
 
-
-## Solution
+## Solution:
 
 ```sql
 SELECT activity_date as day, COUNT(distinct user_id ) as active_users
@@ -56,11 +54,11 @@ WHERE activity_date BETWEEN '2019-06-28' AND '2019-07-27'
 GROUP BY day
 ```
 
-## Result
+## Result:
 
 Input
 
-Activity =
+Activity =
 
 | user_id | session_id | activity_date | activity_type |
 | ------- | ---------- | ------------- | ------------- |
@@ -86,3 +84,49 @@ Expected
 | ---------- | ------------ |
 | 2019-07-20 | 2 |
 | 2019-07-21 | 2 |
+
+# №3. [1070. Product Sales Analysis III](https://leetcode.com/problems/product-sales-analysis-iii/)
+
+## Solution:
+
+```sql
+SELECT s.product_id, s.year as first_year, s.quantity, s.price
+
+FROM Sales s
+
+JOIN
+
+    (SELECT product_id, MIN(year) as first_year
+
+    FROM Sales
+
+    GROUP BY product_id) t
+
+    ON s.product_id = t.product_id AND s.year = t.first_year
+```
+
+## Result:
+
+Input
+
+Sales =
+
+| sale_id | product_id | year | quantity | price |
+| ------- | ---------- | ---- | -------- | ----- |
+| 1       | 100        | 2008 | 10       | 5000  |
+| 2       | 100        | 2009 | 12       | 5000  |
+| 7       | 200        | 2011 | 15       | 9000  |
+
+Output
+
+| product_id | first_year | quantity | price |
+| ---------- | ---------- | -------- | ----- |
+| 100        | 2008       | 10       | 5000  |
+| 200        | 2011       | 15       | 9000  |
+
+Expected
+
+| product_id | first_year | quantity | price |
+| ---------- | ---------- | -------- | ----- |
+| 100        | 2008       | 10       | 5000  |
+| 200        | 2011       | 15       | 9000  |
