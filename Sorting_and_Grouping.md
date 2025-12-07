@@ -175,3 +175,47 @@ Expected
 | class |
 | ----- |
 | Math |
+
+## №5. [1729. Find Followers Count](https://leetcode.com/problems/find-followers-count/)
+
+## Solution:
+
+```sql
+SELECT user_id, COUNT(follower_id) AS followers_count
+
+FROM followers
+
+GROUP BY user_id
+
+ORDER BY user_id
+
+```
+
+## Result:
+
+Input
+
+Followers =
+
+| user_id | follower_id |
+| ------- | ----------- |
+| 0       | 1           |
+| 1       | 0           |
+| 2       | 0           |
+| 2       | 1           |
+
+Output
+
+| user_id | followers_count |
+| ------- | --------------- |
+| 0 | 1 |
+| 1 | 1 |
+| 2 | 2 |
+
+Expected
+
+| user_id | followers_count |
+| ------- | --------------- |
+| 0       | 1               |
+| 1       | 1               |
+| 2       | 2               |
