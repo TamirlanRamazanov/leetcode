@@ -130,3 +130,48 @@ Expected
 | ---------- | ---------- | -------- | ----- |
 | 100        | 2008       | 10       | 5000  |
 | 200        | 2011       | 15       | 9000  |
+
+# №4. [596. Classes With at Least 5 Students](https://leetcode.com/problems/classes-with-at-least-5-students/)
+
+## Solution:
+
+```sql
+SELECT class
+
+FROM courses
+
+GROUP BY class
+
+HAVING COUNT(student) > 4
+
+```
+
+## Result:
+
+Input
+
+Courses =
+
+| student | class    |
+| ------- | -------- |
+| A       | Math     |
+| B       | English  |
+| C       | Math     |
+| D       | Biology  |
+| E       | Math     |
+| F       | Computer |
+| G       | Math     |
+| H       | Math     |
+| I       | Math     |
+
+Output
+
+| class |
+| ----- |
+| Math  |
+
+Expected
+
+| class |
+| ----- |
+| Math |
