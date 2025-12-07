@@ -1,5 +1,6 @@
-# №1 [620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies/)
+# №1. [620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies/)
 ## Solution
+```sql
 SELECT *
 
 FROM cinema
@@ -7,6 +8,8 @@ FROM cinema
 WHERE id % 2 = 1 AND description NOT LIKE 'boring'
 
 ORDER BY rating desc;
+```
+
 ## Result
 Input
 
@@ -34,8 +37,9 @@ Expected
 | 5   | House card | Interesting | 9.1    |
 | 1   | War        | great 3D    | 8.9    |
 
-# №2 [1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/)
+# №2. [1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/)
 ## Solution
+```sql
 SELECT p.product_id,
 
 ROUND(
@@ -57,6 +61,8 @@ ON p.product_id = u.product_id
 AND u.purchase_date BETWEEN p.start_date and p.end_date
 
 GROUP BY product_id
+```
+
 ## Result
 Input
 
@@ -92,8 +98,9 @@ Expected
 | 1          | 6.96          |
 | 2          | 16.96         |
 
-# №3 [1075. Project Employees I](https://leetcode.com/problems/project-employees-i/)
+# №3. [1075. Project Employees I](https://leetcode.com/problems/project-employees-i/)
 ## Solution
+```sql
 SELECT project_id,
 
 ROUND(SUM(e.experience_years)/ COUNT(p.project_id), 2) as average_years
@@ -105,6 +112,7 @@ LEFT JOIN employee e
 ON p.employee_id = e.employee_id
 
 GROUP BY (p.project_id)
+```
 
 ## Result
 
@@ -143,9 +151,9 @@ Expected
 | 1          | 2             |
 | 2          | 2.5           |
 
-# №4 [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
+# №4. [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
 ## Solution
-
+```sql
 SELECT r.contest_id,
 
 ROUND(COUNT(r.user_id)/ (SELECT COUNT(*) FROM users) * 100, 2) AS percentage
@@ -161,6 +169,7 @@ ON u.user_id = r.user_id
 GROUP BY r.contest_id
 
 ORDER BY percentage DESC, contest_id;
+```
 
 ## Result
 
@@ -207,9 +216,9 @@ Expected
 | 215        | 66.67      |
 | 207        | 33.33      |
 
-# №5 [1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/)
+# №5. [1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/)
 ## Solution
-
+```sql
 SELECT query_name, ROUND(AVG(rating / position), 2) as quality,
 
 ROUND(100* SUM(rating < 3) / COUNT(rating), 2) as poor_query_percentage
@@ -217,6 +226,8 @@ ROUND(100* SUM(rating < 3) / COUNT(rating), 2) as poor_query_percentage
 FROM queries
 
 GROUP BY query_name
+```
+
 ## Result
 
 Input
@@ -246,9 +257,10 @@ Expected
 | Dog        | 2.5     | 33.33                 |
 | Cat        | 0.66    | 33.33                 |
 
-# №6 [1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/)
+# №6. [1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/)
 ## Solution
 
+```sql
 SELECT
 
 DATE_FORMAT(trans_date, "%Y-%m") as month
@@ -266,6 +278,7 @@ DATE_FORMAT(trans_date, "%Y-%m") as month
 FROM transactions
 
 GROUP BY month, country;
+```
 
 ## Result
 Input
@@ -296,9 +309,9 @@ Expected
 | 2019-01 | DE      | 1           | 1              | 2000               | 2000                  |
 
 
-# №7
+# №7.
 ## Solution
-
+```sql
 SELECT ROUND( 100 * SUM(order_date = customer_pref_delivery_date) / COUNT(*), 2)
 
 as immediate_percentage
@@ -324,6 +337,8 @@ ON d.customer_id = t.customer_id
 AND d.order_date = t.first_date
 
 ) temp;
+```
+
 ## Result
 
 Input
@@ -353,6 +368,6 @@ Expected
 | -------------------- |
 | 50                   |
 
-# №8
+# №8.
 ## Solution
 ## Result

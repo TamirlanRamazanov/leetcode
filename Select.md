@@ -1,10 +1,14 @@
-# №1 [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
+# №1. [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products/)
 ## Solution:
+
+```sql
+
 SELECT product_id
-
 FROM products
-
 WHERE low_fats = 'Y' AND recyclable = 'Y'
+
+```
+
 ## Result:
 Input
 
@@ -31,14 +35,16 @@ Expected
 | 1          |
 | 3          |
 
-# №2 [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
+# №2. [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee/)
 ## Solution 
+
+```sql
 SELECT name
 
 FROM customer
 
 WHERE referee_id != 2 OR referee_id IS NULL;
-
+```
 ## Result
 Input
 Customer =
@@ -69,14 +75,16 @@ Expected
 | Bill |
 | Zack |
 
-# №3 [595. Big Countries](https://leetcode.com/problems/big-countries/)
+# №3. [595. Big Countries](https://leetcode.com/problems/big-countries/)
 
 ## Solution
+```sql
 SELECT name, population, area
 
 FROM world
 
 WHERE population >= 25000000 OR area >= 3000000;
+```
 
 ## Result
 
@@ -107,15 +115,16 @@ Expected
 | Algeria     | 37100000   | 2381741 |
 
 
-# №4  [1148. Article Views I](https://leetcode.com/problems/article-views-i/)
+# №4.  [1148. Article Views I](https://leetcode.com/problems/article-views-i/)
 
 ## Solution
+```sql
 SELECT DISTINCT author_id as id
 
 FROM views
 
 WHERE author_id = viewer_id
-
+```
 ## Result
 
 Input
@@ -147,13 +156,13 @@ Expected
 
 # №5 [1683. Invalid Tweets](https://leetcode.com/problems/invalid-tweets/)
 ## Solution
-
+```sql
 SELECT tweet_id
 
 FROM tweets
 
 WHERE LENGTH(content) > 15;
-
+```
 ## Result
 Input
 
