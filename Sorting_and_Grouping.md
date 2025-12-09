@@ -219,3 +219,51 @@ Expected
 | 0       | 1               |
 | 1       | 1               |
 | 2       | 2               |
+
+# №6.  [619. Biggest Single Number](https://leetcode.com/problems/biggest-single-number/)
+## Solution:
+
+```sql
+
+SELECT MAX(num) AS num
+
+FROM (
+
+SELECT num
+
+FROM MyNumbers
+
+GROUP BY num
+
+HAVING COUNT(*) = 1
+
+) t;
+```
+## Result: 
+
+Input
+
+MyNumbers =
+
+| num |
+| --- | 
+| 8 |
+| 8 |
+| 3 |
+| 3 |
+| 1 |
+| 4 |
+| 5 |
+| 6 |
+
+Output
+
+| num |
+| --- |
+| 6 |
+
+Expected
+
+| num |
+| --- |
+| 6 |
