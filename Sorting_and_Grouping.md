@@ -267,3 +267,54 @@ Expected
 | num |
 | --- |
 | 6 |
+
+
+# №7. [1045. Customers Who Bought All Products](https://leetcode.com/problems/customers-who-bought-all-products/)
+
+## Solution:
+
+```sql
+SELECT customer_id
+
+FROM customer
+
+GROUP BY customer_id
+
+HAVING COUNT(DISTINCT product_key) = ( SELECT COUNT(*) FROM product)
+
+```
+
+## Result:
+
+Input
+
+Customer =
+
+| customer_id | product_key |
+| ----------- | ----------- |
+| 1 | 5 |
+| 2 | 6 |
+| 3 | 5 |
+| 3 | 6 |
+| 1 | 6 |
+
+Product =
+
+| product_key |
+| ----------- |
+| 5 |
+| 6 |
+
+Output
+
+| customer_id |
+| ----------- |
+| 1 |
+| 3 |
+
+Expected
+
+| customer_id |
+| ----------- |
+| 1           |
+| 3           |
