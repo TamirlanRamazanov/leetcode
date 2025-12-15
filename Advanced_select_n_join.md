@@ -80,3 +80,63 @@ Expected
 | 1 | Michael | 2 | 40 |
 | 2 | Alice | 2 | 37 |
 | 3 | Bob | 1 | 37 |
+
+
+# №2.  [1789. Primary Department for Each Employee](https://leetcode.com/problems/primary-department-for-each-employee/)
+
+## Solution:
+
+```sql
+
+SELECT
+
+	employee_id,
+
+	CASE
+
+		WHEN COUNT(*) = 1 THEN MAX(department_id)
+
+		ELSE MAX(CASE WHEN primary_flag = 'Y' THEN department_id END)
+
+	END AS department_id
+
+FROM employee
+
+GROUP BY employee_id
+
+```
+
+
+## Result: 
+
+Input
+
+Employee =
+
+| employee_id | department_id | primary_flag |
+| ----------- | ------------- | ------------ |
+| 1 | 1 | N |
+| 2 | 1 | Y |
+| 2 | 2 | N |
+| 3 | 3 | N |
+| 4 | 2 | N |
+| 4 | 3 | Y |
+| 4 | 4 | N |
+
+Output
+
+| employee_id | department_id |
+| ----------- | ------------- |
+| 1 | 1 |
+| 2 | 1 |
+| 3 | 3 |
+| 4 | 3 |
+
+Expected
+
+| employee_id | department_id |
+| ----------- | ------------- |
+| 1           | 1             |
+| 2           | 1             |
+| 3           | 3             |
+| 4           | 3             |
