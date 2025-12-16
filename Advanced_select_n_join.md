@@ -140,3 +140,48 @@ Expected
 | 2           | 1             |
 | 3           | 3             |
 | 4           | 3             |
+
+# №3. [610. Triangle Judgement](https://leetcode.com/problems/triangle-judgement/)
+
+## Solution:
+
+```sql
+
+SELECT x, y, z,
+	
+	CASE
+	
+		WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes'
+	
+		ELSE 'No'
+	
+	END AS triangle
+
+FROM triangle
+
+```
+## Result:
+
+Input
+
+
+Triangle =
+
+| x | y | z |
+| -- | -- | -- |
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
+
+Output
+
+| x | y | z | triangle |
+| -- | -- | -- | -------- |
+| 13 | 15 | 30 | No |
+| 10 | 20 | 15 | Yes |
+
+Expected
+
+| x | y | z | triangle |
+| -- | -- | -- | -------- |
+| 13 | 15 | 30 | No |
+| 10 | 20 | 15 | Yes |
